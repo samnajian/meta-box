@@ -227,7 +227,7 @@ class RWMB_File_Field extends RWMB_Field
 			}
 		}
 
-		return array_unique( array_merge( $old, $new ) );
+		return array_unique( array_merge((array) $old, (array) $new ) );
 	}
 
 	/**
