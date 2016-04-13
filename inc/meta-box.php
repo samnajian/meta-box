@@ -141,7 +141,7 @@ class RW_Meta_Box
 	static function get_fields( $fields )
 	{
 		$all_fields = array();
-		foreach ( $fields as $field )
+		foreach ( (array) $fields as $field )
 		{
 			$all_fields[] = $field;
 			if ( isset( $field['fields'] ) )
@@ -338,7 +338,7 @@ class RW_Meta_Box
 	 */
 	static function normalize_fields( $fields )
 	{
-		foreach ( $fields as $k => $field )
+		foreach ( (array) $fields as $k => $field )
 		{
 			$class = self::get_class_name( $field );
 
