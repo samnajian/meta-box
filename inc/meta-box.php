@@ -350,7 +350,7 @@ class RW_Meta_Box
 			}
 
 			// Allow field class add/change default field values
-			$field = call_user_func( array( $class, 'normalize' ), $field );
+			$field = method_exists($class, "normalize") ?  call_user_func( array( $class, 'normalize' ), $field ) : false;
 
 			if ( isset( $field['fields'] ) )
 				$field['fields'] = self::normalize_fields( $field['fields'] );
@@ -375,7 +375,7 @@ class RW_Meta_Box
 	static function get_class_name( $field )
 	{
 		$type  = str_replace( array( '-', '_' ), ' ', $field['type'] );
-		$class = 'RWMB_' . ucwords( $type ) . '_Field';
+		$class = empty( $type ) ?  'RWMB' . ucwords( $type ) . '_Field' : 'RWMB_' . ucwords( $type ) . '_Field' ;
 		$class = str_replace( ' ', '_', $class );
 		return $class;
 	}
